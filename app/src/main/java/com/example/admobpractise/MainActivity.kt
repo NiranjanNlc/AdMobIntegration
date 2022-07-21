@@ -20,6 +20,10 @@ class MainActivity : AppCompatActivity() {
         binding.next.setOnClickListener {
             startActivity(Intent(this,MyActivity::class.java))
         }
+        binding.next1.setOnClickListener {
+            startActivity(Intent(this,RewardActivity::class.java))
+        }
+
     }
 
     private fun addlistnerToAdd() {
