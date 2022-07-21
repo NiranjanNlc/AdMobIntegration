@@ -13,10 +13,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AdMobPractise"
         tools:targetApi="31">
+        <activity
+            android:name=".MyActivity"
+            android:exported="false" />
         <!-- Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713 -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713"/>
+            android:value="ca-app-pub-3940256099942544~3347511713" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">

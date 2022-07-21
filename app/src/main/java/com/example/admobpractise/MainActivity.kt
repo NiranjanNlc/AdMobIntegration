@@ -1,5 +1,6 @@
 package com.example.admobpractise
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
@@ -14,10 +15,15 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
-        MobileAds.initialize(this) {}
-        val adRequest = AdRequest.Builder().build()
-        binding.adView.loadAd(adRequest)
-        binding.adView.adListener = object: AdListener() {
+        loadAd()
+        addlistnerToAdd()
+        binding.next.setOnClickListener {
+            startActivity(Intent(this,MyActivity::class.java))
+        }
+    }
+
+    private fun addlistnerToAdd() {
+        binding.adView.adListener = object : AdListener() {
             override fun onAdClicked() {
                 // Code to be executed when the user clicks on an ad.
             }
@@ -27,7 +33,7 @@ class MainActivity : AppCompatActivity() {
                 // to the app after tapping on an ad.
             }
 
-            override fun onAdFailedToLoad(adError : LoadAdError) {
+            override fun onAdFailedToLoad(adError: LoadAdError) {
                 // Code to be executed when an ad request fails.
             }
 
@@ -45,5 +51,11 @@ class MainActivity : AppCompatActivity() {
                 // covers the screen.
             }
         }
+    }
+
+    private fun loadAd() {
+        MobileAds.initialize(this) {}
+        val adRequest = AdRequest.Builder().build()
+        binding.adView.loadAd(adRequest)
     }
 }
